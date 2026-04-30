@@ -3,21 +3,27 @@ import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { IconButton, MD3Colors } from 'react-native-paper';
 
 export default function CardActions() {
-  const [vote, setVote] = useState<'like' | 'dislike' | null>(null);
-
+  const [vote, setvote] = useState<'like' | 'dislike' | null>(null);
+  const [save, setSave] = useState<'true' | null>(null);
   return (
     <View style={styles.actions}>
       <IconButton
         icon="thumb-up"
         iconColor={vote === 'like' ? '#E50914' : MD3Colors.neutralVariant50}
         size={22}
-        onPress={() => setVote(vote === 'like' ? null : 'like')}
+        onPress={() => setvote(vote === 'like' ? null : 'like')}
       />
       <IconButton
         icon="thumb-down"
         iconColor={vote === 'dislike' ? '#E50914' : MD3Colors.neutralVariant50}
         size={22}
-        onPress={() => setVote(vote === 'dislike' ? null : 'dislike')}
+        onPress={() => setvote(vote === 'dislike' ? null : 'dislike')}
+      />
+      <IconButton
+        icon="bookmark"
+        iconColor={save === 'true' ? '#E50914' : MD3Colors.neutralVariant50}
+        size={22}
+        onPress={() => setSave(save === 'true' ? null : 'true')}
       />
       <View style={{ flex: 1 }} />
       <TouchableOpacity style={styles.watchBtn}>
