@@ -1,7 +1,7 @@
 # app/services/recommendation_service.py
 
 from db.db import db
-from app.utils.vector import cosine_similarity, genre_to_vector
+from utils.vector import cosine_similarity, genre_to_vector
 
 
 def get_all_movies():
