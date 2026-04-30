@@ -7,7 +7,7 @@ from utils.vector import cosine_similarity, genre_to_vector
 def get_all_movies():
     docs = db.collection("movies").stream()
     movies = []
-
+ 
     for doc in docs:
         movie = doc.to_dict()
         movie["id"] = doc.id

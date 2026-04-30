@@ -2,30 +2,57 @@ import React, { useState } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { IconButton, MD3Colors } from 'react-native-paper';
 
-export default function CardActions() {
+type CardActionsProps = {
+  onLike?: () => void;
+  onDislike?: () => void;
+  onSave?: () => void;
+};
+
+export default function CardActions({
+  onLike,
+  onDislike,
+  onSave,
+}: CardActionsProps) {
   const [vote, setvote] = useState<'like' | 'dislike' | null>(null);
   const [save, setSave] = useState<'true' | null>(null);
+
   return (
     <View style={styles.actions}>
       <IconButton
         icon="thumb-up"
         iconColor={vote === 'like' ? '#E50914' : MD3Colors.neutralVariant50}
         size={22}
-        onPress={() => setvote(vote === 'like' ? null : 'like')}
+        onPress={() => {
+          const next = vote === 'like' ? null : 'like';
+          setvote(next);
+          if (next === 'like') onLike?.();
+        }}
       />
+
       <IconButton
         icon="thumb-down"
         iconColor={vote === 'dislike' ? '#E50914' : MD3Colors.neutralVariant50}
         size={22}
-        onPress={() => setvote(vote === 'dislike' ? null : 'dislike')}
+        onPress={() => {
+          const next = vote === 'dislike' ? null : 'dislike';
+          setvote(next);
+          if (next === 'dislike') onDislike?.();
+        }}
       />
+
       <IconButton
         icon="bookmark"
         iconColor={save === 'true' ? '#E50914' : MD3Colors.neutralVariant50}
         size={22}
-        onPress={() => setSave(save === 'true' ? null : 'true')}
+        onPress={() => {
+          const next = save === 'true' ? null : 'true';
+          setSave(next);
+          onSave?.();
+        }}
       />
+
       <View style={{ flex: 1 }} />
+
       <TouchableOpacity style={styles.watchBtn}>
         <Text style={styles.watchText}>▶ Watch</Text>
       </TouchableOpacity>
