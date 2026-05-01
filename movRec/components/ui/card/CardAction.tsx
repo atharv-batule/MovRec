@@ -3,17 +3,21 @@ import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { IconButton, MD3Colors } from 'react-native-paper';
 
 type CardActionsProps = {
+  liked?: boolean;
   onLike?: () => void;
   onDislike?: () => void;
   onSave?: () => void;
 };
 
 export default function CardActions({
+  liked = false,
   onLike,
   onDislike,
   onSave,
 }: CardActionsProps) {
-  const [vote, setvote] = useState<'like' | 'dislike' | null>(null);
+  const [vote, setvote] = useState<'like' | 'dislike' | null>(
+    liked ? 'like' : null
+  );
   const [save, setSave] = useState<'true' | null>(null);
 
   return (
@@ -23,7 +27,7 @@ export default function CardActions({
         iconColor={vote === 'like' ? '#E50914' : MD3Colors.neutralVariant50}
         size={22}
         onPress={() => {
-          if (vote === 'like') 
+          if (vote === 'like') return;
           setvote('like');
           onLike?.();
         }}
@@ -34,7 +38,7 @@ export default function CardActions({
         iconColor={vote === 'dislike' ? '#E50914' : MD3Colors.neutralVariant50}
         size={22}
         onPress={() => {
-          if (vote === 'dislike') return; 
+          if (vote === 'dislike') return;
           setvote('dislike');
           onDislike?.();
         }}

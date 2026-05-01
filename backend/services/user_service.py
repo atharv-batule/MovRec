@@ -2,7 +2,7 @@ from db.db import db
 
 
 def update_user_preferences(user_id, movie_id, movie_vector, liked=True):
-    user_ref = db.collection("users").document(user_id)
+    user_ref = db.collection("Users").document(user_id)
     user_doc = user_ref.get()
 
     if not user_doc.exists:
@@ -84,7 +84,7 @@ def update_user_preferences(user_id, movie_id, movie_vector, liked=True):
 
 
 def toggle_watchlist(user_id, movie_id):
-    user_ref = db.collection("users").document(user_id)
+    user_ref = db.collection("Users").document(user_id)
     user_doc = user_ref.get()
 
     if not user_doc.exists:
@@ -104,7 +104,7 @@ def toggle_watchlist(user_id, movie_id):
 
 
 def get_watchlist(user_id):
-    user_ref = db.collection("users").document(user_id)
+    user_ref = db.collection("Users").document(user_id)
     user_doc = user_ref.get()
 
     if not user_doc.exists:

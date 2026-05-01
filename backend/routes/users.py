@@ -14,7 +14,7 @@ user_bp = Blueprint("user", __name__, url_prefix="/user")
 
 @user_bp.route("/<user_id>", methods=["GET"])
 def get_user(user_id):
-    user_ref = db.collection("users").document(user_id)
+    user_ref = db.collection("Users").document(user_id)
     user_doc = user_ref.get()
 
     if not user_doc.exists:
@@ -35,7 +35,7 @@ def get_user(user_id):
 
 @user_bp.route("/<user_id>/recommendations", methods=["GET"])
 def get_recommendations(user_id):
-    user_ref = db.collection("users").document(user_id)
+    user_ref = db.collection("Users").document(user_id)
     user_doc = user_ref.get()
 
     if not user_doc.exists:
@@ -109,7 +109,7 @@ def update_watchlist(user_id, movie_id):
 
 @user_bp.route("/debug/users", methods=["GET"])
 def debug_users():
-    docs = db.collection("users").stream()
+    docs = db.collection("Users").stream()
     users = []
 
     for doc in docs:
