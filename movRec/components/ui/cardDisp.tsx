@@ -10,10 +10,11 @@ import { sendFeedback, toggleWatchlist } from '@/services/api';
 
 type Props = {
   item: Show;
+  liked?: boolean;
   onRemove?: (movieId: string) => void;
 };
 
-export default function CardDisp({ item, onRemove }: Props) {
+export default function CardDisp({ item, liked, onRemove }: Props) {
   const handleLike = async () => {
     try {
       await sendFeedback('1', item.id, true);
@@ -46,11 +47,12 @@ export default function CardDisp({ item, onRemove }: Props) {
         <CardMedia item={item} />
         <CardContent item={item} />
         <View style={styles.divider} />
-        <CardActions
-          onLike={handleLike}
-          onDislike={handleDislike}
-          onSave={handleSave}
-        />
+       <CardActions
+        liked={liked}
+        onLike={handleLike}
+        onDislike={handleDislike}
+        onSave={handleSave}
+      />
       </View>
     </Surface>
   );

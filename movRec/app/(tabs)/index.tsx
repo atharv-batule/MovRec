@@ -23,6 +23,7 @@ export default function HomeScreen() {
   const [featured, setFeatured] = useState<Show[]>([]);
   const [loading, setLoading] = useState(true);
   const [refreshing, setRefreshing] = useState(false);
+  const [likedIds, setLikedIds] = useState<string[]>([]);
 
   useEffect(() => {
     loadRecommendations();
@@ -94,7 +95,12 @@ export default function HomeScreen() {
         <SectionHeader title="📺 Recommended For You" />
 
         {shows.map((show) => (
-          <CardDisp key={show.id} item={show} onRemove={removeCard} />
+         <CardDisp
+          key={show.id}
+          item={show}
+          liked={likedIds.includes(show.id)}
+          onRemove={removeCard}
+        />
         ))}
       </ScrollView>
     </SafeAreaView>
