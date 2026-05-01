@@ -3,7 +3,7 @@ import { StyleSheet } from 'react-native';
 const Header = () => (
   <Appbar.Header style={styles.header}>
     <Appbar.Content
-      title="Atharv"
+      title="SilverFrame"
       titleStyle={styles.headerTitle}
     />
     <Appbar.Action icon="magnify" onPress={() => {}} color="#fff" />

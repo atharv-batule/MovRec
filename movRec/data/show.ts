@@ -1,167 +1,122 @@
-import { Show } from '@/types/show';
-
-export const SHOWS: Show[] = [
- {
+export const shows = [
+  {
     id: '1',
-    title: "GREY'S ANATOMY",
-    description:
-      'A medical drama about surgeons navigating intense cases, friendships, and complicated relationships at Grey Sloan Memorial Hospital.',
-    image: 'https://image.tmdb.org/t/p/w500/daSFbrt8QCXV2hSwB0hqYjbj681.jpg',
-    genre: 'Drama, Sci-Fi, Action',
+    title: 'How I Met Your Mother',
+    image: 'https://m.media-amazon.com/images/M/MV5BNzQ4ODI5NjYtNTNmNS00ZDc4LTgxZGMtZTQ1NjhiY2Q5YjM2XkEyXkFqcGc@._V1_.jpg',
+    size: 'large',
   },
   {
     id: '2',
-    title: 'HIMYM',
-    description:
-      'A comedy where Ted Mosby tells his kids the long, hilarious story of how he met their mother.',
-    image: 'https://image.tmdb.org/t/p/w500/2Jx8kY5x7C5JvYhCzQvP4GZm0kL.jpg',
-    genre: 'Comedy, Drama',
+    title: 'Friends',
+    image: 'https://m.media-amazon.com/images/M/MV5BNDI5YzgxZDctNTg1MS00N2QzLTg5ZGQtNWMyMjY0Y2Q2N2RmXkEyXkFqcGc@._V1_.jpg',
+    size: 'small',
   },
   {
     id: '3',
-    title: 'THE OFFICE',
-    description:
-      'A mockumentary sitcom following the everyday lives of office employees at Dunder Mifflin, Scranton branch.',
-    image: 'https://image.tmdb.org/t/p/w500/qWnJzyZhyy74gjpSjIXWmuk0ifX.jpg',
-    genre: 'Comedy, Drama',
+    title: 'Grey’s Anatomy',
+    image: 'https://m.media-amazon.com/images/M/MV5BZTg0MTQ2NTUtN2Q0Zi00NmQ0LTk1OWQtNWE3ZGY2YTY1ZmE2XkEyXkFqcGc@._V1_.jpg',
+    size: 'small',
   },
   {
     id: '4',
-    title: 'BREAKING BAD',
-    description:
-      "A high school chemistry teacher turned methamphetamine manufacturer partners with a former student to secure his family's financial future.",
-    image: 'https://image.tmdb.org/t/p/w500/ggFHVNu6YYI5L9pCfOacjizRGt.jpg',
-    genre: 'Thriller, Drama, Action',
+    title: 'Brooklyn Nine-Nine',
+    image: 'https://m.media-amazon.com/images/M/MV5BODQ0OWE2NWQtYTQ2MC00ZjQzLWI4MjYtMTY0YzRhN2RmZTQ0XkEyXkFqcGc@._V1_.jpg',
+    size: 'large',
   },
   {
     id: '5',
-    title: 'STRANGER THINGS',
-    description:
-      'When a boy vanishes, a small town uncovers a mystery involving secret experiments, terrifying supernatural forces and one very strange little girl.',
-    image: 'https://image.tmdb.org/t/p/w500/49WJfeN0moxb9IPfGn8AIqMGskD.jpg',
-    genre: 'Sci-Fi, Thriller, Drama',
+    title: 'Modern Family',
+    image: 'https://m.media-amazon.com/images/M/MV5BZjM0NjM4NWMtZjQ2Mi00YzVkLTkwYzEtYjE4YjQ1NmE4ODUyXkEyXkFqcGc@._V1_.jpg',
+    size: 'small',
   },
   {
     id: '6',
-    title: 'FRIENDS',
-    description:
-      'Follows the personal and professional lives of six twenty to thirty-something-year-old friends living in Manhattan.',
-    image: 'https://image.tmdb.org/t/p/w500/f496cm9enuEsZkSPzCwnTESEK5s.jpg',
-    genre: 'Comedy, Drama',
+    title: 'Superstore',
+    image: 'https://m.media-amazon.com/images/M/MV5BYjQxZjM5YzAtYzM2Ni00YjJmLTgxMmEtYzY0M2NkNGE0ZDUwXkEyXkFqcGc@._V1_.jpg',
+    size: 'large',
   },
   {
     id: '7',
-    title: 'INTERSTELLAR',
-    description:
-      "A team of explorers travel through a wormhole in space in an attempt to ensure humanity's survival.",
-    image: 'https://image.tmdb.org/t/p/w500/gEU2QniE6E77NI6lCU6MxlNBvIx.jpg',
-    genre: 'Sci-Fi, Drama, Thriller',
+    title: 'The Office',
+    image: 'https://m.media-amazon.com/images/M/MV5BNjA5ZGYxYjgtMjBiNy00N2RkLThmMjMtYzNmMjVhYzM5N2I0XkEyXkFqcGc@._V1_.jpg',
+    size: 'small',
   },
   {
     id: '8',
-    title: 'THE DARK KNIGHT',
-    description:
-      'Batman faces the Joker, a criminal mastermind who plunges Gotham into chaos.',
-    image: 'https://image.tmdb.org/t/p/w500/qJ2tW6WMUDux911r6m7haRef0WH.jpg',
-    genre: 'Action, Thriller, Drama',
+    title: 'New Girl',
+    image: 'https://m.media-amazon.com/images/M/MV5BZmYxY2E3NDUtOTQ4Mi00MDE0LTlkMDUtYjA4ZTY2Y2QzYWE2XkEyXkFqcGc@._V1_.jpg',
+    size: 'large',
   },
   {
     id: '9',
-    title: 'INCEPTION',
-    description:
-      'A skilled thief enters dreams to steal secrets but is tasked with planting an idea instead.',
-    image: 'https://image.tmdb.org/t/p/w500/edv5CZvWj09upOsy2Y6IwDhK8bt.jpg',
-    genre: 'Sci-Fi, Thriller, Action',
+    title: 'The Big Bang Theory',
+    image: 'https://m.media-amazon.com/images/M/MV5BMTQ5MzAwMTY4MV5BMl5BanBnXkFtZTgwNjQ5MzI3NjM@._V1_.jpg',
+    size: 'small',
   },
   {
     id: '10',
-    title: 'THE HANGOVER',
-    description:
-      'Three friends wake up after a bachelor party in Vegas with no memory of the previous night.',
-    image: 'https://image.tmdb.org/t/p/w500/uluhlXubGu1VxU63X9VHCLWDAYP.jpg',
-    genre: 'Comedy, Drama',
+    title: 'Schitt’s Creek',
+    image: 'https://m.media-amazon.com/images/M/MV5BY2U1YzRhZjUtOTQxYi00ZTQ5LWI4ZjEtN2Y1YzYwYjQ4ZjJlXkEyXkFqcGc@._V1_.jpg',
+    size: 'large',
   },
   {
     id: '11',
-    title: 'WHIPLASH',
-    description:
-      'A promising young drummer enrolls at a ruthless music conservatory under an abusive instructor.',
-    image: 'https://image.tmdb.org/t/p/w500/7fn624j5lj3xTme2SgiLCeuedmO.jpg',
-    genre: 'Drama, Thriller',
+    title: 'The Good Place',
+    image: 'https://m.media-amazon.com/images/M/MV5BMjA5MTQ4ODQxM15BMl5BanBnXkFtZTgwNjY4NTU3NjM@._V1_.jpg',
+    size: 'small',
   },
   {
     id: '12',
-    title: 'SHUTTER ISLAND',
-    description:
-      'A U.S. Marshal investigates the disappearance of a murderer from a hospital for the criminally insane.',
-    image: 'https://image.tmdb.org/t/p/w500/4GDy0PHYX3VRXUtwK5ysFbg3kEx.jpg',
-    genre: 'Thriller, Drama',
+    title: 'Parks and Recreation',
+    image: 'https://m.media-amazon.com/images/M/MV5BNTk4OTU5Mzg5Nl5BMl5BanBnXkFtZTgwNjk5MDA5MTE@._V1_.jpg',
+    size: 'large',
   },
   {
     id: '13',
-    title: 'THE MARTIAN',
-    description:
-      'An astronaut stranded on Mars must rely on science and resilience to survive.',
-    image: 'https://image.tmdb.org/t/p/w500/5aGhaIHYuQbqlHWvWYqMCnj40y2.jpg',
-    genre: 'Sci-Fi, Drama',
+    title: 'Ted Lasso',
+    image: 'https://m.media-amazon.com/images/M/MV5BZGQzYjI4ZmMtZDEzNy00MWEwLWE1ZDYtOGY1N2I2YjQ2MTQ2XkEyXkFqcGc@._V1_.jpg',
+    size: 'small',
   },
   {
     id: '14',
-    title: 'JOHN WICK',
-    description:
-      'An ex-hitman comes out of retirement to track down the gangsters who destroyed his peace.',
-    image: 'https://image.tmdb.org/t/p/w500/fZPSd91yGE9fCcCe6OoQr6E3Bev.jpg',
-    genre: 'Action, Thriller',
+    title: 'Scrubs',
+    image: 'https://m.media-amazon.com/images/M/MV5BYmJhZmRjNzQtMjE2ZS00ZTVkLTg2NjMtNGQ4M2YxZTRmZWM1XkEyXkFqcGc@._V1_.jpg',
+    size: 'large',
   },
   {
     id: '15',
-    title: 'SUPERBAD',
-    description:
-      'Two high school friends try to enjoy one final party before graduation.',
-    image: 'https://image.tmdb.org/t/p/w500/ek8e8txUyUwd2BNqj6lFEerJfbq.jpg',
-    genre: 'Comedy',
+    title: 'Arrested Development',
+    image: 'https://m.media-amazon.com/images/M/MV5BMDYxYzA3YjUtMDBmYS00YjE1LWE3Y2MtOTQ4YjYxODk2NzA4XkEyXkFqcGc@._V1_.jpg',
+    size: 'small',
   },
   {
     id: '16',
-    title: 'ARRIVAL',
-    description:
-      'A linguist works with the military to communicate with alien lifeforms after mysterious spacecraft appear.',
-    image: 'https://image.tmdb.org/t/p/w500/x2FJsf1ElAgr63Y3PNPtJrcmpoe.jpg',
-    genre: 'Sci-Fi, Drama, Thriller',
+    title: 'Community',
+    image: 'https://m.media-amazon.com/images/M/MV5BMTNmOTc2ZGMtMmYyMi00Y2QxLWEwMmMtYjQxZTJkY2Y0ZjMxXkEyXkFqcGc@._V1_.jpg',
+    size: 'large',
   },
   {
     id: '17',
-    title: 'PRISONERS',
-    description:
-      'When two girls go missing, a desperate father takes matters into his own hands.',
-    image: 'https://image.tmdb.org/t/p/w500/uhviyknTT5cEQXbn6vWIqfM4vGm.jpg',
-    genre: 'Thriller, Drama',
+    title: 'Seinfeld',
+    image: 'https://m.media-amazon.com/images/M/MV5BNmQzYjA5YjMtYTk1Ni00Y2IxLTk3MWEtNWM1OTM0ZDU3ZjM0XkEyXkFqcGc@._V1_.jpg',
+    size: 'small',
   },
   {
     id: '18',
-    title: 'MAD MAX: FURY ROAD',
-    description:
-      'In a post-apocalyptic wasteland, Max teams up with Furiosa to flee a tyrant.',
-    image: 'https://image.tmdb.org/t/p/w500/hA2ple9q4qnwxp3hKVNhroipsir.jpg',
-    genre: 'Action, Thriller, Sci-Fi',
+    title: 'The Bear',
+    image: 'https://m.media-amazon.com/images/M/MV5BMzM3NDU2YjUtODQ2My00YzJlLWE3MjEtY2U4ZjU4YzIwM2I3XkEyXkFqcGc@._V1_.jpg',
+    size: 'large',
   },
   {
     id: '19',
-    title: 'THE SOCIAL NETWORK',
-    description:
-      "The story of Facebook's founding and the lawsuits that followed.",
-    image: 'https://image.tmdb.org/t/p/w500/n0ybibhJtQ5icDqTp8eRytcIHJx.jpg',
-    genre: 'Drama',
+    title: 'You',
+    image: 'https://m.media-amazon.com/images/M/MV5BYTg3OWQ1MzEtZTY2OS00ODZmLWI4ZjEtN2Y4ZWJkM2M4YjM2XkEyXkFqcGc@._V1_.jpg',
+    size: 'small',
   },
   {
     id: '20',
-    title: '21 JUMP STREET',
-    description:
-      'Two young cops go undercover in high school to bring down a drug ring.',
-    image: 'https://image.tmdb.org/t/p/w500/8v3Sqv9UcIUC4ebmpKWROqPBINZ.jpg',
-    genre: 'Comedy, Action',
+    title: 'Wednesday',
+    image: 'https://m.media-amazon.com/images/M/MV5BODZhZDQ2ZTAtODczOC00NmQ4LWJjNmUtY2Y1YTRmNWI0Y2U0XkEyXkFqcGc@._V1_.jpg',
+    size: 'large',
   },
 ];
-
-
-export const FEATURED = SHOWS.slice(0, 4);
