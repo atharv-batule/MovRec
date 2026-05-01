@@ -42,3 +42,4 @@ app-example
 # generated native folders
 /ios
 /android
+react-native-keyboard-aware-scroll-view

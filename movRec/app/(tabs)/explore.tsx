@@ -1,8 +1,9 @@
 import { Image } from 'expo-image';
-import { ScrollView, StyleSheet, View, Pressable, TextInput } from 'react-native';
+import { StyleSheet, View, Pressable, TextInput } from 'react-native';
 import { useMemo, useState } from 'react';
+import { Ionicons } from '@expo/vector-icons';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
-import { IconSymbol } from '@/components/ui/icon-symbol';
 import { shows } from '@/data/show';
 
 export default function ExploreScreen() {
@@ -20,23 +21,22 @@ export default function ExploreScreen() {
   const rightColumn = filteredShows.filter((_, index) => index % 2 !== 0);
 
   return (
-    <ScrollView
+    <KeyboardAwareScrollView
       style={styles.container}
       contentContainerStyle={styles.content}
       showsVerticalScrollIndicator={false}
-      keyboardShouldPersistTaps="handled">
-
+      keyboardShouldPersistTaps="always"
+      enableOnAndroid
+      extraScrollHeight={20}
+    >
       <View style={styles.searchBar}>
-        <View pointerEvents="none">
-          <IconSymbol size={18} name="magnifyingglass" color="#8E8E93" />
-        </View>
-
+        <Ionicons name="search" size={18} color="#8E8E93" />
         <TextInput
+          style={styles.searchInput}
           placeholder="Search movies, shows..."
           placeholderTextColor="#8E8E93"
           value={searchQuery}
           onChangeText={setSearchQuery}
-          style={styles.searchInput}
           autoCapitalize="none"
           autoCorrect={false}
           returnKeyType="search"
@@ -51,13 +51,9 @@ export default function ExploreScreen() {
               style={[
                 styles.card,
                 show.size === 'large' ? styles.largeCard : styles.smallCard,
-              ]}>
-              <Image
-                source={{ uri: show.image }}
-                style={styles.image}
-                contentFit="cover"
-                transition={300}
-              />
+              ]}
+            >
+              <Image source={{ uri: show.image }} style={styles.image} contentFit="cover" />
             </Pressable>
           ))}
         </View>
@@ -69,18 +65,14 @@ export default function ExploreScreen() {
               style={[
                 styles.card,
                 show.size === 'large' ? styles.largeCard : styles.smallCard,
-              ]}>
-              <Image
-                source={{ uri: show.image }}
-                style={styles.image}
-                contentFit="cover"
-                transition={300}
-              />
+              ]}
+            >
+              <Image source={{ uri: show.image }} style={styles.image} contentFit="cover" />
             </Pressable>
           ))}
         </View>
       </View>
-    </ScrollView>
+    </KeyboardAwareScrollView>
   );
 }
 
@@ -107,7 +99,7 @@ const styles = StyleSheet.create({
     flex: 1,
     color: 'white',
     fontSize: 15,
-    padding: 0,
+    paddingVertical: 0,
   },
   columns: {
     flexDirection: 'row',
