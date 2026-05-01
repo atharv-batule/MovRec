@@ -1,14 +1,12 @@
-# db.py
-
 import firebase_admin
 from firebase_admin import credentials, firestore
 import os
+import json
 
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-key_path = os.path.join(BASE_DIR, "serviceAccountKey.json")
+firebase_config = json.loads(os.environ["FIREBASE_CREDENTIALS"])
 
 if not firebase_admin._apps:
-    cred = credentials.Certificate(key_path)
+    cred = credentials.Certificate(firebase_config)
     firebase_admin.initialize_app(cred)
 
 db = firestore.client()
