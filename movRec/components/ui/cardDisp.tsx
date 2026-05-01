@@ -6,17 +6,18 @@ import { Show } from '@/types/show';
 import CardMedia from './card/cardmedia';
 import CardContent from './card/CardContent';
 import CardActions from './card/CardAction';
-import { sendFeedback } from '@/services/api';
+import { sendFeedback, toggleWatchlist } from '@/services/api';
 
 type Props = {
   item: Show;
+  onRemove?: (movieId: string) => void;
 };
 
-export default function CardDisp({ item }: Props) {
+export default function CardDisp({ item, onRemove }: Props) {
   const handleLike = async () => {
     try {
-      const data = await sendFeedback('1', item.id, true);
-      console.log('Liked:', data);
+      await sendFeedback('1', item.id, true);
+      onRemove?.(item.id);
     } catch (error) {
       console.error('Like failed:', error);
     }
@@ -24,15 +25,19 @@ export default function CardDisp({ item }: Props) {
 
   const handleDislike = async () => {
     try {
-      const data = await sendFeedback('1', item.id, false);
-      console.log('Disliked:', data);
+      await sendFeedback('1', item.id, false);
+      onRemove?.(item.id);
     } catch (error) {
       console.error('Dislike failed:', error);
     }
   };
 
-  const handleSave = () => {
-    console.log('Saved:', item.id);
+  const handleSave = async () => {
+    try {
+      await toggleWatchlist('1', item.id);
+    } catch (error) {
+      console.error('Save failed:', error);
+    }
   };
 
   return (
