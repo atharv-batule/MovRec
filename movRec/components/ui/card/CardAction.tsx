@@ -23,9 +23,9 @@ export default function CardActions({
         iconColor={vote === 'like' ? '#E50914' : MD3Colors.neutralVariant50}
         size={22}
         onPress={() => {
-          const next = vote === 'like' ? null : 'like';
-          setvote(next);
-          if (next === 'like') onLike?.();
+          if (vote === 'like') 
+          setvote('like');
+          onLike?.();
         }}
       />
 
@@ -34,9 +34,9 @@ export default function CardActions({
         iconColor={vote === 'dislike' ? '#E50914' : MD3Colors.neutralVariant50}
         size={22}
         onPress={() => {
-          const next = vote === 'dislike' ? null : 'dislike';
-          setvote(next);
-          if (next === 'dislike') onDislike?.();
+          if (vote === 'dislike') return; 
+          setvote('dislike');
+          onDislike?.();
         }}
       />
 
