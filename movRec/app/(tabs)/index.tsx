@@ -1,3 +1,4 @@
+// app/(tabs)/index.tsx
 import React, { useEffect, useState } from 'react';
 import {
   SafeAreaView,
@@ -6,7 +7,7 @@ import {
   FlatList,
   StyleSheet,
   ActivityIndicator,
-  View,
+  RefreshControl,
 } from 'react-native';
 
 import Header from '@/components/ui/nav';
@@ -21,6 +22,7 @@ export default function HomeScreen() {
   const [shows, setShows] = useState<Show[]>([]);
   const [featured, setFeatured] = useState<Show[]>([]);
   const [loading, setLoading] = useState(true);
+  const [refreshing, setRefreshing] = useState(false);
 
   useEffect(() => {
     loadRecommendations();
@@ -37,7 +39,14 @@ export default function HomeScreen() {
       console.error('Failed to load recommendations:', error);
     } finally {
       setLoading(false);
+      setRefreshing(false);
     }
+  };
+
+  const removeCard = (movieId: string) => {
+    const updated = shows.filter((show) => show.id !== movieId);
+    setShows(updated);
+    setFeatured(updated.slice(0, 4));
   };
 
   if (loading) {
@@ -58,6 +67,16 @@ export default function HomeScreen() {
         style={styles.scroll}
         showsVerticalScrollIndicator={false}
         contentContainerStyle={styles.scrollContent}
+        refreshControl={
+          <RefreshControl
+            refreshing={refreshing}
+            onRefresh={() => {
+              setRefreshing(true);
+              loadRecommendations();
+            }}
+            tintColor="#fff"
+          />
+        }
       >
         <SectionHeader title="🔥 Trending Now" />
 
@@ -75,7 +94,7 @@ export default function HomeScreen() {
         <SectionHeader title="📺 Recommended For You" />
 
         {shows.map((show) => (
-          <CardDisp key={show.id} item={show} />
+          <CardDisp key={show.id} item={show} onRemove={removeCard} />
         ))}
       </ScrollView>
     </SafeAreaView>
