@@ -1,58 +1,65 @@
-import React, { useState } from 'react';
+import React, { useMemo } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { IconButton, MD3Colors } from 'react-native-paper';
 
+import { Show } from '@/types/show';
+import { useWatchlist } from '@/context/watchlistcontext';
+import { toggleWatchlist } from '@/services/api';
+
 type CardActionsProps = {
+  movie: Show;
   liked?: boolean;
   onLike?: () => void;
   onDislike?: () => void;
-  onSave?: () => void;
 };
 
 export default function CardActions({
+  movie,
   liked = false,
   onLike,
   onDislike,
-  onSave,
 }: CardActionsProps) {
-  const [vote, setvote] = useState<'like' | 'dislike' | null>(
-    liked ? 'like' : null
-  );
-  const [save, setSave] = useState<'true' | null>(null);
+  const { watchlist, addToWatchlist, removeFromWatchlist } = useWatchlist();
+
+  const isSaved = useMemo(() => {
+    return watchlist.some((item) => item.id === movie.id);
+  }, [watchlist, movie.id]);
+
+  const handleSaveToggle = async () => {
+  try {
+    if (isSaved) {
+      removeFromWatchlist(movie.id); // instant UI update
+    } else {
+      addToWatchlist(movie); // instant UI update
+    }
+
+    await toggleWatchlist('1', movie.id); // backend toggles automatically
+  } catch (error) {
+    console.error('Failed to update watchlist:', error);
+  }
+};
 
   return (
     <View style={styles.actions}>
       <IconButton
         icon="thumb-up"
-        iconColor={vote === 'like' ? '#E50914' : MD3Colors.neutralVariant50}
+        iconColor={liked ? '#E50914' : MD3Colors.neutralVariant50}
         size={22}
-        onPress={() => {
-          if (vote === 'like') return;
-          setvote('like');
-          onLike?.();
-        }}
+        onPress={onLike}
       />
 
       <IconButton
         icon="thumb-down"
-        iconColor={vote === 'dislike' ? '#E50914' : MD3Colors.neutralVariant50}
+        iconColor={MD3Colors.neutralVariant50}
         size={22}
-        onPress={() => {
-          if (vote === 'dislike') return;
-          setvote('dislike');
-          onDislike?.();
-        }}
+        onPress={onDislike}
       />
 
       <IconButton
         icon="bookmark"
-        iconColor={save === 'true' ? '#E50914' : MD3Colors.neutralVariant50}
+        iconColor={isSaved ? '#E50914' : MD3Colors.neutralVariant50}
         size={22}
-        onPress={() => {
-          const next = save === 'true' ? null : 'true';
-          setSave(next);
-          onSave?.();
-        }}
+        onPress={handleSaveToggle}
       />
 
       <View style={{ flex: 1 }} />

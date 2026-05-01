@@ -6,7 +6,7 @@ import { Show } from '@/types/show';
 import CardMedia from './card/cardmedia';
 import CardContent from './card/CardContent';
 import CardActions from './card/CardAction';
-import { sendFeedback, toggleWatchlist } from '@/services/api';
+import { sendFeedback } from '@/services/api';
 
 type Props = {
   item: Show;
@@ -33,26 +33,19 @@ export default function CardDisp({ item, liked, onRemove }: Props) {
     }
   };
 
-  const handleSave = async () => {
-    try {
-      await toggleWatchlist('1', item.id);
-    } catch (error) {
-      console.error('Save failed:', error);
-    }
-  };
-
   return (
     <Surface style={styles.surface} elevation={3}>
       <View style={styles.card}>
         <CardMedia item={item} />
         <CardContent item={item} />
         <View style={styles.divider} />
-       <CardActions
-        liked={liked}
-        onLike={handleLike}
-        onDislike={handleDislike}
-        onSave={handleSave}
-      />
+
+        <CardActions
+          movie={item}
+          liked={liked}
+          onLike={handleLike}
+          onDislike={handleDislike}
+        />
       </View>
     </Surface>
   );

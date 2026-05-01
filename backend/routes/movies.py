@@ -10,7 +10,7 @@ def home():
 
 @movies_bp.route("/movies", methods=["GET"])
 def get_movies():
-    docs = db.collection("Movies").stream()
+    docs = db.collection("movies").stream()
     print(docs)
     movies = []
     for doc in docs:

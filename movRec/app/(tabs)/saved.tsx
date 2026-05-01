@@ -1,5 +1,4 @@
-// app/(tabs)/saved.tsx
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import {
   SafeAreaView,
   ScrollView,
@@ -13,26 +12,10 @@ import Header from '@/components/ui/nav';
 import CardDisp from '@/components/ui/cardDisp';
 import SectionHeader from '@/components/SectionHeader';
 import { Show } from '@/types/show';
-import { fetchWatchlist } from '@/services/api';
+import { useSaved } from '@/context/watchlistcontext';
 
 export default function SavedScreen() {
-  const [saved, setSaved] = useState<Show[]>([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    loadWatchlist();
-  }, []);
-
-  const loadWatchlist = async () => {
-    try {
-      const data = await fetchWatchlist('1');
-      setSaved(data.watchlist || []);
-    } catch (error) {
-      console.error('Failed to load watchlist:', error);
-    } finally {
-      setLoading(false);
-    }
-  };
+  const { saved, loading } = useSaved();
 
   if (loading) {
     return (
@@ -53,7 +36,7 @@ export default function SavedScreen() {
         {saved.length === 0 ? (
           <Text style={styles.empty}>No saved movies yet</Text>
         ) : (
-          saved.map((show) => <CardDisp key={show.id} item={show} />)
+          saved.map((show: Show) => <CardDisp key={show.id} item={show} />)
         )}
       </ScrollView>
     </SafeAreaView>

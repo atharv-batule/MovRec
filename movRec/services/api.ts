@@ -1,4 +1,4 @@
-const BASE_URL = 'http://127.0.0.1:5000';
+const BASE_URL = 'https://dull-bees-speak.loca.lt';
 
 export async function fetchRecommendations(userId: string) {
   const res = await fetch(`${BASE_URL}/user/${userId}/recommendations`);

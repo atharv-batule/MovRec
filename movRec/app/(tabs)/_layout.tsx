@@ -37,7 +37,7 @@ export default function TabLayout() {
     tabBarIcon: ({ color, focused }) => (
       <IconSymbol
         size={28}
-        name={focused ? 'bookmark.fill' : 'bookmark'}
+        name='bookmark.fill'
         color={color}
       />
     ),
