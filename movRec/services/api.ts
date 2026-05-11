@@ -1,4 +1,4 @@
-const BASE_URL = 'https://dull-bees-speak.loca.lt';
+const BASE_URL = 'https://movrec-xvip.onrender.com/';
 
 export async function fetchRecommendations(userId: string) {
   const res = await fetch(`${BASE_URL}/user/${userId}/recommendations`);
